@@ -176,7 +176,7 @@ $secondary-base: (
 $secondary-wind: (
   BackgroundColor: transparent,
   BorderColor: pfe-var(surface--border),
-  Color: pfe-broadcasted(link),
+  Color: pfe-var(link),
   FontWeight: pfe-var(font-weight--normal),
 
   BackgroundColor--hover: pfe-var(surface--border--lightest),

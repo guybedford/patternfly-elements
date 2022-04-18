@@ -9,7 +9,7 @@
   z-index: 0;
   vertical-align: middle;
   max-width: pfe-local(MaxWidth);
-  background-color: pfe-local(BackgroundColor);
+  background-color: pfe-local(BackgroundColor) !important;
   border-radius: pfe-local(BorderRadius);
   border: pfe-var(ui--border-width) pfe-var(ui--border-style) pfe-local(BorderColor);
   cursor: pointer;
