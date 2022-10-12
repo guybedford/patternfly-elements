@@ -5,7 +5,7 @@
   # defering instead to the build command to run npm ci
   NPM_FLAGS = '--dry-run --ignore-scripts'
 [build]
-  command = "npm ci && npm run build:docs"
+  command = "npm ci && npm run build && npm run build:docs"
 
 [[redirects]]
   from = '/v1/*'
