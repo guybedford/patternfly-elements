@@ -4,7 +4,7 @@ title: Typography
 tags:
   - theming
 ---
-<script type="module" src="/elements/pfe-cta/dist/pfe-cta.min.js"></script>
+<script type="module" src="{{ '/elements/pfe-cta/dist/pfe-cta.min.js' | url }}"></script>
 
 
 ::: section header

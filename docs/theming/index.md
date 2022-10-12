@@ -3,8 +3,8 @@ layout: layout-basic.html
 title: Theming
 ---
 
-<script type="module" src="/elements/pfe-cta/dist/pfe-cta.min.js"></script>
-<script type="module" src="/elements/pfe-card/dist/pfe-card.min.js"></script>
+<script type="module" src="{{ '/elements/pfe-cta/dist/pfe-cta.min.js' | url }}"></script>
+<script type="module" src="{{ '/elements/pfe-card/dist/pfe-card.min.js' | url }}"></script>
 
 ::: section header
 # {{ title }}
