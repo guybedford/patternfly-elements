@@ -36,7 +36,7 @@
     "bootstrap": "lerna bootstrap --hoist",
     "start:docs": "eleventy --serve",
     "prebuild:docs": "npm-run-all --serial clean:docs --parallel todos polyfills",
-    "build:docs": "eleventy",
+    "build:docs": "eleventy --pathprefix=v1",
     "release": "bash scripts/release.sh",
     "postinstall": "export FORCE_COLOR=3; npm run bootstrap",
     "license-update": "node scripts/license-update.js",

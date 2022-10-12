@@ -1,6 +1,6 @@
 <header>
   <div class="logo-bar">
-    <a href="/">
+    <a href="{{ '/' | url }}">
       <img src="/brand/logo/svg/pfe-icon-white-shaded.svg" alt="PatternFly Elements - Home">
       PatternFly Elements
     </a>
@@ -25,7 +25,7 @@
       <ul class="site-navigation__wrapper">
         <li class="site-navigation__item">
           <a class="site-navigation__link{% if page.url == "/get-started/" %} site-navigation__link--active{% endif %}"
-            href="/get-started/">Get started</a>
+            href="{{ '/get-started/' | url }}">Get started</a>
         </li>
         <li class="site-navigation__item">
           <details{% if page.url contains "components/" %} open{% endif %}>
@@ -33,12 +33,12 @@
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
                 <a class="site-navigation__sub-menu__link{% if page.url == "/components/" %} site-navigation__sub-menu__link--active{% endif %}"
-                  href="/components/">All components</a>
+                  href="{{ '/components/' | url }}">All components</a>
               </li>
               {%- for component in collections.component -%}
               <li class="site-navigation__sub-menu__item">
                 <a class="site-navigation__sub-menu__link{% if page.url == component.url %} site-navigation__sub-menu__link--active{% endif %}"
-                  href="{{ component.url }}">{{ component.data.title }}</a>
+                  href="{{ component.url | url }}">{{ component.data.title }}</a>
               </li>
               {%- endfor -%}
             </ul>
@@ -50,12 +50,12 @@
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
                 <a class="site-navigation__sub-menu__link{% if page.url == "/framework-integration/" %} site-navigation__sub-menu__link--active{% endif %}"
-                  href="/framework-integration/">Overview</a>
+                  href="{{ '/framework-integration/' | url }}">Overview</a>
               </li>
               {%- for document in collections.frameworkIntegration -%}
               <li class="site-navigation__sub-menu__item">
                 <a class="site-navigation__sub-menu__link{% if page.url == document.url %} site-navigation__sub-menu__link--active{% endif %}"
-                  href="{{ document.url }}">{{ document.data.title }}</a>
+                  href="{{ document.url | url }}">{{ document.data.title }}</a>
               </li>
               {%- endfor -%}
             </ul>
@@ -67,12 +67,12 @@
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
                 <a class="site-navigation__sub-menu__link{% if page.url == "/theming/" %} site-navigation__sub-menu__link--active{% endif %}"
-                  href="/theming/">Overview</a>
+                  href="{{ '/theming/' | url }}">Overview</a>
               </li>
               {%- for document in collections.theming -%}
               <li class="site-navigation__sub-menu__item">
                 <a class="site-navigation__sub-menu__link{% if page.url == document.url %} site-navigation__sub-menu__link--active{% endif %}"
-                  href="{{ document.url }}">{{ document.data.title }}</a>
+                  href="{{ document.url | url }}">{{ document.data.title }}</a>
               </li>
               {%- endfor -%}
             </ul>
@@ -80,7 +80,7 @@
         </li>
         <li class="site-navigation__item">
           <a class="site-navigation__link{% if page.url == "/layout/" %} site-navigation__link--active{% endif %}"
-            href="/layout/">Layout</a>
+            href="{{ '/layout/' | url }}">Layout</a>
         </li>
         <li class="site-navigation__item">
           <details{% if page.url contains "docs/develop/" %} open{% endif %}>
@@ -89,7 +89,7 @@
               {%- for document in collections.develop -%}
               <li class="site-navigation__sub-menu__item">
                 <a class="site-navigation__sub-menu__link{% if page.url == document.url %} site-navigation__sub-menu__link--active{% endif %}"
-                  href="{{ document.url }}">{{ document.data.title }}</a>
+                  href="{{ document.url | url }}">{{ document.data.title }}</a>
               </li>
               {%- endfor -%}
             </ul>

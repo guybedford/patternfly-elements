@@ -168,9 +168,9 @@ A couple of things to note:
 
 Now that our `pfe-cool-element` is more appealing, we'll add the follow button's interaction and fill in the profile photo. We can accomplish both of these tasks by updating the `/src/pfe-cool-element.js` file.
 
-<a href="/theming/">Learn more about applying a theme.</a>
+<a href="{{ '/theming' | url }}">Learn more about applying a theme.</a>
 
 <pfe-cta>
-  <a href="../javascript">Next up: Write your JavaScript</a>
+  <a href="{{ '../javascript' | url }}">Next up: Write your JavaScript</a>
 </pfe-cta>
 :::

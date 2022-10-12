@@ -29,10 +29,10 @@
           <h3>Resources</h3>
           <ul>
             <li>
-              <a href="/get-started">Documentation</a>
+              <a href="{{ '/get-started' | url }}">Documentation</a>
             </li>{% if page.url == component.url %}
             <li>
-              <a href="/elements/{{ component.data.package }}/demo">Demo page</a>
+              <a href="{{ '/elements/' + component.data.package + '/demo' | url }}">Demo page</a>
             </li>{% endif %}
             <li>
               <a href="https://medium.com/patternfly-elements">Medium</a>

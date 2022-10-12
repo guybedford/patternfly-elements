@@ -37,7 +37,7 @@ npm install @patternfly/{{ package }}
 To get started, include a link to `pfe-layouts` in the `head` of the document.
 
 ```html
-<link rel="stylesheet" type="text/css" href="/path/to/pfe-layouts.min.css">
+<link rel="stylesheet" href="/path/to/pfe-layouts.min.css">
 ```
 :::
 

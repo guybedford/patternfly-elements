@@ -189,6 +189,6 @@ We've been publishing our PatternFly Elements to npm under the [PatternFly organ
 Now that we have understand how it all works, let's create a PatternFly Element together.
 
 <pfe-cta>
-  <a href="/docs/develop/create">Create a PatternFly Element</a>
+  <a href="{{ '/docs/develop/create' | url }}">Create a PatternFly Element</a>
 </pfe-cta>
 :::

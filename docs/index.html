@@ -13,33 +13,33 @@ githubLink: https://github.com/patternfly/patternfly-elements
   <meta name="theme-color" content="#004080">
   <title>{{ title }}</title>
   <meta name="description" content="{{ title }} - {{ description }}">
-  <link href="/brand/logo/svg/pfe-icon-blue.svg" rel="shortcut icon">
+    <link href="{{ '/brand/logo/svg/pfe-icon-blue.svg' | url }}" rel="shortcut icon">
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&family=Red+Hat+Text&family=Overpass+Mono&display=swap"
     rel="stylesheet">
 
   <noscript>
-    <link href="../../elements/pfelement/dist/pfelement--noscript.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="{{ '../../elements/pfelement/dist/pfelement--noscript.min.css' | url }}">
   </noscript>
   
-  <link rel="stylesheet" type="text/css" href="/prism.css">
-  <link rel="stylesheet" type="text/css" href="/elements/pfelement/dist/pfelement.min.css">
-  <link rel="stylesheet" type="text/css" href="/elements/pfe-styles/dist/pfe-layouts.min.css">
-  <link rel="stylesheet" type="text/css" href="/elements/pfe-styles/dist/pfe-base.min.css">
-  <link rel="stylesheet" type="text/css" href="/main.css">
+  <link rel="stylesheet" href="{{ '/prism.css' | url }}">
+  <link rel="stylesheet" href="{{ '/elements/pfelement/dist/pfelement.min.css' | url }}">
+  <link rel="stylesheet" href="{{ '/elements/pfe-styles/dist/pfe-layouts.min.css' | url }}">
+  <link rel="stylesheet" href="{{ '/elements/pfe-styles/dist/pfe-base.min.css' | url }}">
+  <link rel="stylesheet" href="{{ '/main.css' | url }}">
   <script type="module">
-    import "/elements/pfe-band/dist/pfe-band.min.js";
-    import "/elements/pfe-card/dist/pfe-card.min.js";
-    import "/elements/pfe-cta/dist/pfe-cta.min.js";
-    import "/elements/pfe-accordion/dist/pfe-accordion.min.js";
-    import "/elements/pfe-tabs/dist/pfe-tabs.min.js";
-    import "/elements/pfe-select/dist/pfe-select.min.js";
-    import PfeIcon from "/elements/pfe-icon/dist/pfe-icon.min.js";
+    import "{{ '/elements/pfe-band/dist/pfe-band.min.js' }}";
+    import "{{ '/elements/pfe-card/dist/pfe-card.min.js' }}";
+    import "{{ '/elements/pfe-cta/dist/pfe-cta.min.js' }}";
+    import "{{ '/elements/pfe-accordion/dist/pfe-accordion.min.js' }}";
+    import "{{ '/elements/pfe-tabs/dist/pfe-tabs.min.js' }}";
+    import "{{ '/elements/pfe-select/dist/pfe-select.min.js' }}";
+    import PfeIcon from "{{ '/elements/pfe-icon/dist/pfe-icon.min.js' | url }}";
    
     PfeIcon.addIconSet(
       "fas",
-      "/icons/font-awesome/solid",
+      "{{ '/icons/font-awesome/solid' | url }}",
       (iconName, setName, path) => {
         const name = iconName.replace("fas-", "");
         return `${path}/${name}.svg`;
@@ -55,7 +55,7 @@ githubLink: https://github.com/patternfly/patternfly-elements
       <div class="pfe-l-bullseye">
         <div class="pfe-l-bullseye__item">
           <h1 id="home-title">
-            <img src="/images/logo/pfe-icon-white-shaded.svg" alt="">
+              <img src="{{ '/images/logo/pfe-icon-white-shaded.svg' | url }}" alt="">
             {{ title }}
           </h1>
           <p class="tagline">{{ description }}</p>
@@ -85,7 +85,7 @@ githubLink: https://github.com/patternfly/patternfly-elements
       <pfe-band color="lightest">
         <h2 id="lightweight">Lightweight</h2>
         <h3>Install only what you need.</h3>
-        <p>Pick and choose from the <a href="/components/">list of components</a>. Use them all or just one. And keep your page payloads small with PatternFly Elements because the components range from ~3 kB to ~10 kB in size minified and gzipped.</p>
+          <p>Pick and choose from the <a href="{{ '/components/' | url }}">list of components</a>. Use them all or just one. And keep your page payloads small with PatternFly Elements because the components range from ~3 kB to ~10 kB in size minified and gzipped.</p>
         <div class="pfe-l-grid pfe-m-gutters">
           <div class="pfe-l-grid__item pfe-m-12-col pfe-m-6-col-on-md pfe-m-8-col-on-lg">
             <div>
@@ -193,7 +193,7 @@ export default function App() {
         <br>
         <div class="pfe-l--text-align--center">
           <pfe-cta>
-            <a href="/framework-integration/">Learn how to integrate PatternFly Elements in your application</a>
+              <a href="{{ '/framework-integration/' | url }}">Learn how to integrate PatternFly Elements in your application</a>
           </pfe-cta>
         </div>
       </pfe-band>
@@ -343,7 +343,7 @@ export default function App() {
       <pfe-band color="lightest">
         <div class="pfe-l--text-align--center">
           <pfe-cta>
-            <a href="/theming/">Learn more about theming PatternFly Elements</a>
+              <a href="{{ '/theming/' | url }}">Learn more about theming PatternFly Elements</a>
           </pfe-cta>
         </div>
       </pfe-band>
@@ -449,10 +449,10 @@ export default function App() {
           <h3>Resources</h3>
           <ul>
             <li>
-              <a href="/get-started">Documentation</a>
+              <a href="{{ '/get-started' | url }}">Documentation</a>
             </li>
             <li>
-              <a href="/examples">Demos</a>
+              <a href="{{ '/examples' | url }}">Demos</a>
             </li>
             <li>
               <a href="https://medium.com/patternfly-elements">Medium</a>
