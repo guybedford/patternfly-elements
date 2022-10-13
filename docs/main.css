@@ -125,7 +125,7 @@ main.basic {
   z-index: 200;
 }
 
-.logo-bar a {
+.logo-bar > a {
   display: flex;
   align-items: center;
   color: white;
@@ -135,8 +135,13 @@ main.basic {
   margin-left: calc(1.5rem + 16px);
 }
 
-.logo-bar a img {
+.logo-bar > a img {
   display: none;
+}
+
+#docs-versions-dropdown {
+  margin-inline-start: auto;
+  --pfe-dropdown--Color: white;
 }
 
 .component-preview {
@@ -284,7 +289,7 @@ main.basic {
 
 .site-navigation {
   width: 17.5rem;
-  /* padding-top: 1.875rem; */
+  padding-top: 1.875rem;
   height: calc(100vh - 3.75rem);
   overflow-y: auto;
   color: #151515;

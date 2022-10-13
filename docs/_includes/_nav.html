@@ -4,6 +4,22 @@
       <img src="/brand/logo/svg/pfe-icon-white-shaded.svg" alt="PatternFly Elements - Home">
       PatternFly Elements
     </a>
+    <pfe-dropdown id="docs-versions-dropdown" aria-label="Docs Versions" label="Docs Versions">
+      <pfe-dropdown-item item-type="link" data-version="v2">
+        <a href="{{ page.url }}">v2 prerelease</a>
+      </pfe-dropdown-item>
+      <pfe-dropdown-item item-type="link" data-version="v1">
+        <a href="/v1{{ page.url }}">v1</a>
+      </pfe-dropdown-item>
+    </pfe-dropdown>
+    <script type="module">
+      const dropdown = document.getElementById('docs-versions-dropdown');
+      const items = dropdown.querySelectorAll('[data-version]');
+      const versions = Object.fromEntries(Array.from(items, x => [x.dataset.version, x]));
+      const [fst] = new URL(location.href).pathname;
+      let [highest] = Object.keys(versions).sort().reverse();
+      dropdown.setAttribute('label', fst in versions ? fst : highest);
+    </script>
   </div>
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox"
     aria-controls="mobile-menu-menu-container" autocomplete="off">
@@ -14,14 +30,6 @@
   </label>
   <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
     <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
-      <pfe-dropdown label="Docs Versions">
-        <pfe-dropdown-item item-type="link">
-          <a href="{{ page.url }}">v2 prerelease</a>
-        </pfe-dropdown-item>
-        <pfe-dropdown-item item-type="link">
-          <a href="/v1{{ page.url }}">v1</a>
-        </pfe-dropdown-item>
-      </pfe-dropdown>
       <ul class="site-navigation__wrapper">
         <li class="site-navigation__item">
           <a class="site-navigation__link{% if page.url == "/get-started/" %} site-navigation__link--active{% endif %}"
