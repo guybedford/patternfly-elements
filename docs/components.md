@@ -21,7 +21,7 @@ Components are interactive building blocks of our design system. Each component 
     <div class="component-preview">
       <div class="component-preview--container">
       {%- if meta.env == "prod" %}<a href="{{ component.url | url }}" aria-label="{{ component.data.title }}">{% endif %}
-        <div class="preview-image" style="background-image: url({{ (component.url + '/preview.png') | url }});"></div>
+        <div class="preview-image" style="background-image: url({{ (component.url | append: '/preview.png') | url }});"></div>
       {%- if meta.env == "prod" %}</a>{% endif -%}
         {%- if meta.env != "prod" -%}
           <div class="overlay">

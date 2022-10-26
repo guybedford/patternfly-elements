@@ -26,7 +26,7 @@
 
   <script type="module" src="{{ '/elements/pfe-dropdown/dist/pfe-dropdown.min.js' | url }}"></script>
   {% for p in packages %}
-  <script type="module" src="{{ '/elements/' + p + '/dist/' + p + '.min.js' | url }}"></script>
+  <script type="module" src="{{ '/elements/' | append: p | append: '/dist/' | append: p | append: '.min.js' | url }}"></script>
   {% endfor %}
 
   <!-- Injected separately because it's used in so many base templates -->
