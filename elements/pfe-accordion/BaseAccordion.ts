@@ -2,7 +2,7 @@ import type { TemplateResult } from 'lit';
 import type { ColorTheme, ColorPalette } from '@patternfly/pfe-core';
 
 import { LitElement, html } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 import {
   bound,
@@ -74,36 +74,6 @@ export abstract class BaseAccordion extends LitElement {
     single?: 'true'|'false';
 
   /**
-   * Updates `window.history` and the URL to create sharable links.
-   * With the `history` attribute, the accordion *must* have an `id`.
-   *
-   * The URL pattern will be `?{id-of-tabs}={index-of-expanded-items}`.
-   * In the example below, selecting "Accordion 2" will update the URL as follows:
-   * `?lorem-ipsum=2`. The index value for the expanded items starts at 1.
-   *
-   * ```html
-   * <pfe-accordion history id="lorem-ipsum">
-   *   <pfe-accordion-header>
-   *     <h3>Accordion 1</h3>
-   *   </pfe-accordion-header>
-   *   <pfe-accordion-panel>
-   *     <p>Accordion 1 panel content.</p>
-   *   </pfe-accordion-panel>
-   *   <pfe-accordion-header>
-   *     <h3>Accordion 2</h3>
-   *   </pfe-accordion-header>
-   *   <pfe-accordion-panel>
-   *     <p>Accordion 2 panel content.</p>
-   *   </pfe-accordion-panel>
-   * </pfe-accordion>
-   * ```
-   *
-   * To expand multiple sets, you can dash separate indexes: ?lorem-ipsum=1-2.
-   */
-  @observed
-  @property({ type: Boolean }) history = false;
-
-  /**
    * Sets and reflects the currently expanded accordion indexes.
    * Use commas to separate multiple indexes. The index value for the
    * expanded items starts at 1.
@@ -131,8 +101,6 @@ export abstract class BaseAccordion extends LitElement {
    */
   declare context: 'light'|'dark'|'saturated';
 
-  @state() private _updateHistory = true;
-
   #expandedSets = new Set<number>();
 
   private initialized = false;
@@ -157,7 +125,6 @@ export abstract class BaseAccordion extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener('popstate', this._updateStateFromURL);
   }
 
   isAccordionPanel(el?: EventTarget|null): el is BaseAccordionPanel {
@@ -192,9 +159,6 @@ export abstract class BaseAccordion extends LitElement {
     }
 
     this.updateAccessibility();
-
-    // Update state if params exist in the URL
-    this._updateStateFromURL();
   }
 
   @bound private _changeHandler(event: AccordionHeaderChangeEvent) {
@@ -209,8 +173,6 @@ export abstract class BaseAccordion extends LitElement {
     } else {
       this.collapse(index);
     }
-
-    this._updateURLHistory();
   }
 
   _expandHeader(header: BaseAccordionHeader, index?: number) {
@@ -434,53 +396,6 @@ export abstract class BaseAccordion extends LitElement {
     }
   }
 
-  /**
-   * This handles updating the URL parameters based on the current state
-   * of the global this.expanded array
-   * @requires this.expandedSets {Array}
-   */
-  @bound private _updateURLHistory() {
-    if (!this.history || !this._updateHistory) {
-      return;
-    }
-
-    if (!this.id) {
-      this.#logger.error(`The history feature cannot update the URL without an ID added to the accordion tag.`);
-      return;
-    }
-
-    // Iterate the expanded array by 1 to convert to human-readable vs. array notation;
-    // sort values numerically and connect them using a dash
-    const openIndexes = Array.from(this.#expandedSets, item => item + 1)
-      .sort((a, b) => a - b)
-      .join('-');
-
-    // Capture the URL and rebuild it using the new state
-    const url = new URL(window.location.href);
-
-    // If values exist in the array, add them to the parameter string
-    // Otherwise delete the set entirely
-    if (this.#expandedSets.size > 0) {
-      url.searchParams.set(this.id, openIndexes);
-    } else {
-      url.searchParams.delete(this.id);
-    }
-
-    // Note: Using replace state protects the user's back navigation
-    history.replaceState({}, '', url.toString());
-  }
-
-  /**
-   * This captures the URL parameters and expands each item in the array
-   */
-  @bound private _updateStateFromURL() {
-    const indexesFromURL = this._getIndexesFromURL() ?? [];
-
-    this._updateHistory = false;
-    indexesFromURL.forEach(idx => this.expand(idx));
-    this._updateHistory = true;
-  }
-
   public updateAccessibility() {
     const headers = this.#allHeaders();
 
@@ -525,16 +440,6 @@ export abstract class BaseAccordion extends LitElement {
     }
 
     const allHeaders: Array<BaseAccordionHeader> = this.#allHeaders(parentAccordion);
-    const allPanels: Array<BaseAccordionPanel> = this.#allPanels(parentAccordion);
-
-    // Get all the headers and capture the item by index value
-    if (this.single === 'true' && this._updateHistory) {
-      const allOpenedHeaders = allHeaders.filter(header => header.expanded);
-      const allOpenedPanels = allPanels.filter(panel => panel.expanded);
-
-      allOpenedHeaders.forEach(header => this._collapseHeader(header));
-      allOpenedPanels.forEach(panel => this._collapsePanel(panel));
-    }
 
     const toggle = allHeaders[index];
     if (!toggle) {
